@@ -1,5 +1,5 @@
 
-README: ????? Smart Tester System
+Talaf Smart Tester System
 
 Developers
 	•	Alhanouf Hamid Alotaibi (442013621)
@@ -10,7 +10,7 @@ Supervised by: Ghadah Alshabana
 
 Introduction
 
- ????? is a smart tester system designed to improve hygiene in physical stores by offering contactless testing of liquid products, such as perfumes and cosmetics. It integrates hardware and software to dispense products automatically when a customer’s hand is detected and provides detailed product information through barcode scanning. Additionally, a survey collects customer feedback to analyze preferences, enhancing inventory management and customer satisfaction.
+ Talaf is a smart tester system designed to improve hygiene in physical stores by offering contactless testing of liquid products, such as perfumes and cosmetics. It integrates hardware and software to dispense products automatically when a customer’s hand is detected and provides detailed product information through barcode scanning. Additionally, a survey collects customer feedback to analyze preferences, enhancing inventory management and customer satisfaction.
 Software and Hardware Used
 
 Hardware:
