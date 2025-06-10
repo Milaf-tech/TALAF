@@ -1,0 +1,151 @@
+/* إعدادات عامة */
+body {
+  font-family: 'Arial', sans-serif;
+  background: #ffff; /* رمادي فاتح */
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+}
+
+/* الشريط الجانبي */
+.sidebar {
+  width: 250px;
+  background: linear-gradient(#b0b0b0, rgb(92, 121, 122)); /*  الألوان */
+  height: 100vh; /* يمتد طول الصفحة بالكامل */
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: rgb(0, 0, 0);
+  padding-top: 30px;
+  box-sizing: border-box;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  border-right: 2px solid white;
+}
+.logo {
+  width: 130px; /* حجم اللوجو */
+  height: auto;
+  margin-bottom: -40px; /* المسافة بين اللوجو والقائمة */
+  margin-left: 20px; /* المسافة من اليسار */
+ 
+}
+/* الروابط داخل الشريط الجانبي */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin: 20px 0;
+}
+
+/* الروابط داخل الشريط الجانبي */
+.sidebar ul li a {
+  display: block;
+  padding: 14px 20px;
+  font-size: 18px;
+  color: black !important; /* التأكيد على اللون الأسود باستخدام !important */
+  text-decoration: none; /* إزالة الخط السفلي */
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar ul li a:hover {
+  background-color: #555555; /* تغيير الخلفية عند التمرير */
+  color: white !important; /* التأكيد على تغيير اللون إلى الأبيض عند التمرير */
+}
+
+
+/* المحتوى */
+.content {
+  margin-left: 250px; /* عرض الشريط الجانبي */
+  padding: 20px;
+  width: calc(100% - 250px); /* تأكد من أن المحتوى يعرض المساحة المتبقية بعد الشريط */
+  min-height: 100vh; /* تأكد من أن المحتوى سيملأ الشاشة بالكامل */
+  overflow: visible;
+}
+
+/* حاوية المنتجات */
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* تقسيم الأعمدة لعرض 3 منتجات في كل صف */
+  gap: 20px;
+  max-width: 100%; /* التأكد من أن العرض يتناسب مع الشاشة */
+  margin: 0 auto; /* ضبط المسافة التلقائية للمنتصف */
+  padding-bottom: 20px; /* إضافة حيز في الأسفل إذا كان هناك محتوى زائد */
+}
+
+/* بطاقات المنتجات */
+.card {
+  background: #dcd9d9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+}
+
+
+
+.card h3 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.card p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+/* أزرار التعديل والحذف */
+.edit, .delete {
+  position: absolute;
+  top: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.edit {
+  left: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.delete {
+  right: 10px;
+  color: #ff4d4d;
+  text-decoration: none;
+}
+
+/* زر QR Code */
+.qrCode img {
+  width: 100px;
+  height: 100px;
+  margin-top: 10px;
+}
+
+/* أزرار عامة */
+button {
+  background-color: #5dade2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #3498db;
+}

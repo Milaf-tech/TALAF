@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color:#ffffff;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100%;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(to right,#b0b0b0,rgb(92, 121, 122));
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            color: white;
+            padding-top: 30px;
+            box-sizing: border-box;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            border-right: 2px solid white;
+        }
+
+        .logo {
+            width: 130px;
+            height: auto;
+            margin-bottom: -40px;
+            margin-left: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            margin: 20px 0;
+        }
+
+        .sidebar ul li a {
+            display: block;
+            padding: 14px 20px;
+            font-size: 18px;
+            color: black !important;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #555555;
+            color: white !important;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            width: calc(100% - 250px);
+            min-height: 100vh;
+            overflow: visible;
+        }
+
+        h1 {
+            color: #000000;
+            margin-left: 100px;  
+            margin-top: 80px;
+        }
+
+        canvas {
+            margin-left: -200px;
+            margin-top: 100px;
+            width: 1200px;
+            height: 1000px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <img src="css/logo.png" class="logo" alt="Logo">
+        <ul>
+            <li><a href="Analysis.html">Dashboard</a></li>
+            <li><a href="addSmartTester.php">Add Smart Tester</a></li>
+            <li><a href="showAllSmartTester.php">Modify Smart Tester</a></li>
+            <li><a href="LoginPage.php">Log Out</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h1>Preferences Analysis</h1>
+        <canvas id="analysisChart" width="2500" height="800"></canvas>
+    </div>
+
+    <script>
+        fetch("http://localhost/Talaf/Survey.php")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then(data => {
+                const labels = data.map(item => item.productName);
+                const likes = data.map(item => item.percentage_liked);
+                const dislikes = data.map(item => item.percentage_not_liked);
+
+                const ctx = document.getElementById('analysisChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'Liked (%)',
+                                data: likes,
+                                backgroundColor: '#b0b0b0',
+                                borderColor: '#b0b0b0',
+                                borderWidth: 1,
+                                 hoverBackgroundColor: '#b0b0b0',
+                                hoverBorderColor: '#b0b0b0'
+                            },
+                            {
+                                label: 'Disliked (%)',
+                                data: dislikes,
+                                backgroundColor: 'rgb(92, 121, 122)',
+                                borderColor: 'rgb(92, 121, 122)',
+                                borderWidth: 1,
+                                 hoverBackgroundColor: 'rgb(92, 121, 122)',
+                                hoverBorderColor: 'rgb(92, 121, 122)'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                ticks: {
+                                    font: {
+                                        size: 14,  
+                                        family: 'Arial',
+                                        weight: 'bold',
+                                        style: 'italic'
+                                    },
+                                    color: '#aaa8a8'  
+                                }
+                            },
+                            y:  {
+                                beginAtZero: true,
+                                max: 100,
+                                ticks: {
+                                    font: {
+                                        size: 12,
+                                        family: 'Arial',
+                                        style: 'italic'
+                                    },
+                                    color: '#aaa8a8'  
+                                },
+                                grid: {
+                                    color: '#aaa8a8',
+                                }
+                            }
+                        },
+                        barThickness: 50, 
+                        layout: {
+                            padding: {
+                                left: 250,
+                                right: 20,
+                                top: 20,
+                                bottom: 20
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => {
+                console.error("Error fetching data:", error);
+            });
+    </script>
+</body>
+</html>
